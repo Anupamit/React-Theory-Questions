@@ -188,8 +188,148 @@ The component lifecycle has three distinct lifecycle phases:
 
 ## Q.17 What are the lifecycle methods of React?
 **componentDidMount**: Executed after first rendering and where all AJAX requests, DOM or state updates, and set up event listeners should occur.
+
 **componentDidUpdate**: Mostly it is used to update the DOM in response to prop or state changes. This will not fire if shouldComponentUpdate() returns false.
+
 **componentWillUnmount**: It will be used to cancel any outgoing network requests, or remove all event listeners associated with the component.
+
+## Q.18 What are Higher-Order Components?
+A higher-order component is a function that takes a component and returns a new component. Basically, it's a pattern that is derived from React's compositional nature.
+
+We call them pure components because they can accept any dynamically provided child component but they won't modify or copy any behavior from their input components.
+It use as
+- Code reuse, logic and bootstrap abstraction.
+- Render hijacking.
+- State abstraction and manipulation.
+- Props manipulation.
+## Q.19 If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with computed property names.
+```js
+handleInputChange(event) {
+  this.setState({ [event.target.id]: event.target.value })
+}
+```
+## Q.20 What are the advantages of React?
+Below are the list of main advantages of React,
+-Increases the application's performance with Virtual DOM.
+-JSX makes code easy to read and write.
+-It renders both on client and server side (SSR).
+-Easy to integrate with frameworks (Angular, Backbone) since it is only a view library.
+-Easy to write unit and integration tests with tools such as Jest.
+## Q.21 What are the limitations of React?
+Apart from the advantages, there are few limitations of React too,
+- React is just a view library, not a full framework.
+- There is a learning curve for beginners who are new to web development.
+- Integrating React into a traditional MVC framework requires some additional configuration.
+- The code complexity increases with inline templating and JSX.
+- Too many smaller components leading to over engineering or boilerplate.
+## Q.22 What is the lifecycle methods order in mounting?
+The lifecycle methods are called when an instance of a component is being created and inserted into the DOM.
+- constructor()
+- static getDerivedStateFromProps()
+- render()
+- componentDidMount()
+## Q.23 What is strict mode in React?
+React.StrictMode is a useful component for highlighting potential problems in an application. It does not render any extra DOM elements. It activates additional checks and warnings for its descendants. These checks apply for development mode only.
+## Q.24 Why should component names start with capital letter?
+If you are rendering your component using JSX, the name of that component has to begin with a capital letter otherwise React will throw an error as an unrecognized tag. This convention is because only HTML elements and SVG tags can begin with a lowercase letter.
+## Q.25 How to loop inside JSX?
+You can simply use Array.prototype.map with ES6 arrow function syntax.
+
+For example, the items array of objects is mapped into an array of components:
+```js
+<tbody>
+  {items.map(item => <SomeComponent key={item.id} name={item.name} />)}
+</tbody>
+```
+## Q.26 What is the difference between React and ReactDOM?
+The react package contains React.createElement(), React.Component, React.Children, and other helpers related to elements and component classes. You can think of these as the isomorphic or universal helpers that you need to build components. The react-dom package contains ReactDOM.render(), and in react-dom/server we have server-side rendering support with ReactDOMServer.renderToString() and ReactDOMServer.renderToStaticMarkup().
+## Q.27 How to listen to state changes?
+The componentDidUpdate lifecycle method will be called when state changes. You can compare provided state and props values with current state and props to determine if something meaningful changed.
+```js
+componentDidUpdate(object prevProps, object prevState)
+```
+## Q.28 Why you can't update props in React?
+The React philosophy is that props should be immutable and top-down. This means that a parent can send any prop values to a child, but the child can't modify received props.
+## Q.29 What is React Router?
+React Router is a powerful routing library built on top of React that helps you add new screens and flows to your application incredibly quickly, all while keeping the URL in sync with what's being displayed on the page.
+## Q.30 What is Redux?
+Redux is a predictable state container for JavaScript apps based on the Flux design pattern. Redux can be used together with React, or with any other view library. It is tiny (about 2kB) and has no dependencies.
+## Q.31 What is flux?
+Flux is an application design paradigm used as a replacement for the more traditional MVC pattern. It is not a framework or a library but a new kind of architecture that complements React and the concept of Unidirectional Data Flow. Facebook uses this pattern internally when working with React.
+## Q.32 What are the core principles of Redux?
+Redux follows three fundamental principles:
+
+- Single source of truth: The state of your whole application is stored in an object tree within a single store. The single state tree makes it easier to keep track of changes over time and debug or inspect the application.
+- State is read-only: The only way to change the state is to emit an action, an object describing what happened. This ensures that neither the views nor the network callbacks will ever write directly to the state.
+- Changes are made with pure functions: To specify how the state tree is transformed by actions, you write reducers. Reducers are just pure functions that take the previous state and an action as parameters, and return the next state.
+## Q.33 What is the mental model of redux-saga?
+Saga is like a separate thread in your application, that's solely responsible for side effects. redux-saga is a redux middleware, which means this thread can be started, paused and cancelled from the main application with normal Redux actions, it has access to the full Redux application state and it can dispatch Redux actions as well.
+## Q.34 What is Redux Thunk?
+Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch() and getState() as parameters.
+## Q.35 What are the differences between redux-saga and redux-thunk?
+Both Redux Thunk and Redux Saga take care of dealing with side effects. In most of the scenarios, Thunk uses Promises to deal with them, whereas Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers, Sagas/Generators are more powerful but you will need to learn them. But both middleware can coexist, so you can start with Thunks and introduce Sagas when/if you need them.
+## Q.36 What are the differences between Flux and Redux?
+Below are the major differences between Flux and Redux
+|Flux	|Redux|
+|State is mutable |	State is immutable|
+|The Store contains both state and change logic	| The Store and change logic are separate|
+|There are multiple stores exist |	There is only one store exist|
+|All the stores are disconnected and flat |	Single store with hierarchical reducers|
+|It has a singleton dispatcher	| There is no concept of dispatcher|
+|React components subscribe to the store	| Container components uses connect function|
+## Q.37 What are hooks?
+Hooks is a special function (introduced as a new feature in React 16.8) that lets you use state and other React features without writing a class.
+```js
+Let's see an example of useState hook:
+
+import { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+## Q.38 What rules need to be followed for hooks?
+You need to follow two rules in order to use hooks,
+- Call Hooks only at the top level of your react functions. i.e, You shouldn’t call Hooks inside loops, conditions, or nested functions. This will ensure that Hooks are called in the same order each time a component renders and it preserves the state of Hooks between multiple useState and useEffect calls.
+- Call Hooks from React Functions only. i.e, You shouldn’t call Hooks from regular JavaScript functions.
+## Q.39What is the difference between Real DOM and Virtual DOM?
+Below are the main differences between Real DOM and Virtual DOM,
+
+|Real DOM	| Virtual DOM|
+|Updates are slow	| Updates are fast|
+|DOM manipulation is very expensive. |	DOM manipulation is very easy|
+|You can update HTML directly. |	You Can’t directly update HTML|
+|It causes too much of memory wastage |	There is no memory wastage|
+|Creates a new DOM if element updates |	It updates the JSX if element update |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
