@@ -210,11 +210,11 @@ handleInputChange(event) {
 ```
 ## Q.20 What are the advantages of React?
 Below are the list of main advantages of React,
--Increases the application's performance with Virtual DOM.
--JSX makes code easy to read and write.
--It renders both on client and server side (SSR).
--Easy to integrate with frameworks (Angular, Backbone) since it is only a view library.
--Easy to write unit and integration tests with tools such as Jest.
+- Increases the application's performance with Virtual DOM.
+- JSX makes code easy to read and write.
+- It renders both on client and server side (SSR).
+- Easy to integrate with frameworks (Angular, Backbone) since it is only a view library.
+- Easy to write unit and integration tests with tools such as Jest.
 ## Q.21 What are the limitations of React?
 Apart from the advantages, there are few limitations of React too,
 - React is just a view library, not a full framework.
